@@ -1,6 +1,7 @@
 package cn.edu.bupt.byrclient.activity;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,7 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import java.net.URL;
+import java.util.Objects;
+
 import cn.edu.bupt.byrclient.R;
+import cn.edu.bupt.byrclient.handler.JSONParser;
+import cn.edu.bupt.byrclient.network.BYRURL;
+import cn.edu.bupt.byrclient.network.HTTPClient;
 
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +49,14 @@ public class MainActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HTTPClient httpClient = new HTTPClient(BYRURL.ROOT_SECTION_URL);
+                System.out.println(JSONParser.readSectionJSONStream(httpClient.HTTPRequest()));
+            }
+        }).start();
     }
 
     @Override
