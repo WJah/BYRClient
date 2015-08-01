@@ -1,7 +1,12 @@
 package cn.edu.bupt.byrclient.activity;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.os.Bundle;
+=======
+import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
+>>>>>>> Network
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
@@ -14,7 +19,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.net.URL;
+import java.util.Objects;
+
 import cn.edu.bupt.byrclient.R;
+import cn.edu.bupt.byrclient.handler.JSONParser;
+import cn.edu.bupt.byrclient.network.BYRURL;
+import cn.edu.bupt.byrclient.network.HTTPClient;
 
 
 public class MainActivity extends AppCompatActivity
@@ -45,8 +56,18 @@ public class MainActivity extends AppCompatActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+<<<<<<< HEAD
         mToolbar = (Toolbar)findViewById(R.id.my_awesome_toolbar);
         setSupportActionBar(mToolbar);
+=======
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HTTPClient httpClient = new HTTPClient(BYRURL.ROOT_SECTION_URL);
+                System.out.println(JSONParser.readSectionJSONStream(httpClient.HTTPRequest()));
+            }
+        }).start();
+>>>>>>> Network
     }
 
     @Override
