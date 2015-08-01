@@ -4,9 +4,9 @@ android {
     signingConfigs {
         config {
             keyAlias 'byrclient_debug_key'
-            keyPassword 'byrclient_android'
-            storeFile file('C:/Users/Administrator/.android/debug.keystore')
-            storePassword 'byrclient_android'
+            keyPassword 'byrclient_debug'
+            storePassword 'byrclient_debug'
+            storeFile file('/Users/wangjiahe/.android/debug.keystore')
         }
     }
     compileSdkVersion 22
@@ -30,6 +30,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.github.paper777:BBSSDK:1.2@aar'
 }
